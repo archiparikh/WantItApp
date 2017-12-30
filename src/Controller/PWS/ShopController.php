@@ -3,16 +3,15 @@
  * Created by PhpStorm.
  * User: archi.parikh
  * Date: 12/27/2017
- * Time: 9:41 PM
+ * Time: 11:20 PM
  */
-// src/Controller/LuckyController.php
-namespace App\Controller;
+namespace App\Controller\PWS;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class LuckyController extends Controller
+class ShopController extends Controller
 {
-    public function number()
+    public function index()
     {
         $number = mt_rand(0, 100);
 
