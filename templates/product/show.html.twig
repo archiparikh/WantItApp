@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Information for the product {{ product.id }}{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1>{{ product.name }}</h1>
+        <p class="lead">{{ product.description }}</p>
+        <p>Price: {{ product.price }} $</p>
+        {{ render(controller('App\\Controller\\CartController::addItemForm', { 'id' : product.id })) }}
+
+        <a href="{{ path('product.index') }}">Back to the home</a>
+    </div>
+  {% endblock %}

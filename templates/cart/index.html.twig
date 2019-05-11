@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}My cart{% endblock %}
+{% block body %}
+    {% include 'include/flash_message.html.twig' %}
+    <div class="row">
+        <table class="table table-hover">
+            <thead class="text-center">
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody class="text-center">
+                {% for product in cartItems %}
+                    <tr>
+                        <td>
+                            <div class="media">
+                                <div class="media-body">
+                                    <a href="{{ path('product.show', {'id' : product['id']}) }}">{{ product['name'] }}</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{ product['quantity'] }}</td>
+                        <td>${{ product['price'] }}</td>
+                        <td class="font-weight-bold">${{ product['quantity'] * product['price'] }}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="text-right font-weight-bold">Total</td>
+                    <td class="font-weight-bold">${{ total }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a class="btn btn-success" href="{{ path('cart.clear') }}">Clear the cart</a>
+    </div>
+{% endblock %}

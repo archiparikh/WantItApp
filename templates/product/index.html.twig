@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home - All products{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% if products|length > 0 %}
+            <h1>All products</h1>
+            <div class="row">
+                {% for product in products %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ product.name }}</h4>
+                                <p class="card-text">Price: {{ product.price }} $</p>
+                                <a href="{{ path('product.show', { 'id' : product.id }) }}" class="card-link">View details</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
